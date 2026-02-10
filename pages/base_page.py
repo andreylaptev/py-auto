@@ -50,3 +50,7 @@ class BasePage:
     def get_text(self, selector: str) -> str:
         """Get text content of an element."""
         return self.page.locator(selector).text_content(timeout=self.timeout) or ""
+
+    def is_visible(self, selector: str) -> bool:
+        """Check if an element is visible."""
+        return self.page.locator(selector).is_visible(timeout=self.timeout)

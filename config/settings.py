@@ -13,7 +13,7 @@ load_dotenv(_env_path)
 class Settings:
     """Centralized settings for test execution."""
 
-    BASE_URL: str = os.getenv("BASE_URL", "https://example.com").rstrip("/")
+    BASE_URL: str = os.getenv("BASE_URL", "https://uat.expresstoll.com").rstrip("/")
     BROWSER: str = os.getenv("BROWSER", "chromium")
     HEADED: bool = os.getenv("HEADED", "false").lower() == "true"
     SLOW_MO: int = int(os.getenv("SLOW_MO", "0"))
