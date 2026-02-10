@@ -1,0 +1,34 @@
+[project]
+name = "py-auto"
+version = "0.1.0"
+description = "Web test automation framework with Python and Playwright"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pytest>=7.4.0",
+    "pytest-playwright>=0.4.0",
+    "playwright>=1.40.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest-html>=4.0.0",
+    "pytest-xdist>=3.5.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-v --tb=short"
+markers = [
+    "e2e: end-to-end tests",
+    "smoke: smoke test suite",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
