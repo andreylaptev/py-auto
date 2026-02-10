@@ -11,20 +11,15 @@ class ExpressTollHomePage(BasePage):
     def __init__(self, page: Page) -> None:
         super().__init__(page, url_path="/")
 
-    # Home page links (text-based locators)
-    LINK_PAY_YOUR_TOLL = "text=PAY YOUR TOLL"
-    LINK_CREATE_ACCOUNT = "text=CREATE ACCOUNT"
-    LINK_SIGN_IN = "text=SIGN IN"
-
     def are_home_links_displayed(self) -> bool:
-        """Return True if PAY YOUR TOLL, CREATE ACCOUNT and SIGN IN are visible."""
+        """Return True if PAY YOUR TOLL, CREATE ACCOUNT and SIGN IN are visible (title case on site)."""
         return (
-            self.is_visible(self.LINK_PAY_YOUR_TOLL)
-            and self.is_visible(self.LINK_CREATE_ACCOUNT)
-            and self.is_visible(self.LINK_SIGN_IN)
+            self.page.get_by_text("Pay Your Toll", exact=False).first.is_visible(timeout=self.timeout)
+            and self.page.get_by_text("Create Account", exact=False).first.is_visible(timeout=self.timeout)
+            and self.page.get_by_text("Sign In", exact=False).first.is_visible(timeout=self.timeout)
         )
 
     def click_sign_in(self) -> "ExpressTollHomePage":
-        """Click the SIGN IN link."""
-        self.click(self.LINK_SIGN_IN)
+        """Click the SIGN IN link (navigates to /sign-in)."""
+        self.page.get_by_role("link", name="Sign In").click(timeout=self.timeout)
         return self
