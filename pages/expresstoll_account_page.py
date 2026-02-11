@@ -11,14 +11,14 @@ class ExpressTollAccountPage(BasePage):
     def __init__(self, page: Page) -> None:
         super().__init__(page, url_path="/")
 
-    GREETING_TEXT = "text=HELLO, AUTOTESTFN!"
+    GREETING_TEXT = "text=HELLO, TESTFIRST!"
     PAYMENT_SUMMARY_HEADING = "text=PAYMENT SUMMARY"
     POPUP_HEADING = "text=ADD ADDITIONAL FUNDS TO MY ACCOUNT"
     FUND_AMOUNT_INPUT = "input[name*='amount' i], input[id*='amount' i], input[placeholder*='amount' i]"
     POPUP_ADD_FUNDS_BUTTON = "[role='dialog'] button:has-text('Add Additional Funds'), .modal button:has-text('Add')"
 
     def is_greeting_displayed(self) -> bool:
-        """Return True if 'HELLO, AUTOTESTFN!' is visible."""
+        """Return True if 'HELLO, TESTFIRST!' is visible."""
         return self.is_visible(self.GREETING_TEXT)
 
     def go_to_payments(self) -> "ExpressTollAccountPage":
